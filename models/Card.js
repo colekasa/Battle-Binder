@@ -13,34 +13,34 @@ Card.init (
     },
     name: {
         type: DataTypes.STRING,
-        allowNull: false,
+
     },
     type:{
         type: DataTypes.STRING,
-        allowNull: false,
+
     },
     desc:{
       type: DataTypes.STRING,
-      allowNull: false,
+
     },
     atk: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+
     },
     def:{
         type: DataTypes.INTEGER,
-        allowNull: false,
+
     },
     level:{
         type: DataTypes.INTEGER,
-        allowNull: false,
+
     },
     attribute:{
         type: DataTypes.STRING,
     },
     card_images:{
         type: DataTypes.STRING,
-        allowNull:false,
+
     }
     },
     {
@@ -48,7 +48,7 @@ Card.init (
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'user',
+        modelName: 'Card',
     }
 );
 
