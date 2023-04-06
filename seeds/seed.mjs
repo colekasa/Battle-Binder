@@ -18,7 +18,7 @@ function getYugiohCards() {
                 response.json().then(function (cardData) {
                     // Map Card Data
                     const cards = cardData.data.map(card => {
-                        const { id, name, type, atk, def, level, attribute, archetype, /*card_images,*/ image_url } = card;
+                        const { id, name, type, atk, def, level, attribute, archetype, card_images /* image_url */ } = card;
                         return {
                             id,
                             name,
@@ -28,8 +28,8 @@ function getYugiohCards() {
                             level,
                             attribute,
                             archetype,
-                            // card_images,
-                            image_url
+                            card_images,
+                            //image_url
                         }
                     });
                     // SEED bulk of cards
