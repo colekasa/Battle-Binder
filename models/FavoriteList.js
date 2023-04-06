@@ -1,10 +1,10 @@
+// TODO: add a table that you can add multiple Favorites to by linking a foreign key
 const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-class Favorites extends Model{};
+class FavoriteList extends Model{};
 
-Favorites.init(
+FavoriteList.init(
     {
     id: {
       type: DataTypes.INTEGER,
@@ -12,21 +12,21 @@ Favorites.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    card_id: {
-        type: DataTypes.INTEGER,
-        references: {
-        model: 'Card',
-        key: 'id',
-      }
-    },
+    favorites_id:{
+        type:DataTypes.INTEGER,
+        references:{
+            model:'Favorites',
+            key:'id'
+        }
+    }
     },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'Favorites',
+        modelName: 'FavoriteList',
     },
 );
 
-module.exports = Favorites;
+module.exports = FavoriteList;
