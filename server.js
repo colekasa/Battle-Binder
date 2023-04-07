@@ -6,6 +6,7 @@ const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 
 const sequelize = require('./config/connection');
+const { Deck, Card, Cards } = require('./models');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
@@ -25,8 +26,8 @@ const sess = {
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
-    db: sequelize
-  })
+    db: sequelize,
+  }),
 };
 
 app.use(session(sess));
@@ -42,5 +43,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+  app.listen(PORT, () => {
+    Deck.findAll({
+      include: [
+        {
+          model: Card,
+          through: Cards,
+          as: 'cards',
+        },
+      ],
+    }).then(function (deck) {
+      console.log(
+        deck[0].get({
+          plain: true,
+        })
+      );
+    });
+    return console.log('Now listening');
+  });
 });

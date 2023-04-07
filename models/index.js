@@ -1,43 +1,42 @@
 const User = require('./User');
 const Card = require('./Card');
-const Favorites = require('./Favorites');
-const FavoriteList = require('./FavoriteList');
+const Cards = require('./Cards');
+const Deck = require('./Deck');
 
-User.hasOne(FavoriteList, {
+User.hasMany(Deck, {
   foreignKey: 'user_id',
-})
+});
 
-FavoriteList.belongsTo(User, {
+Deck.belongsTo(User, {
   foreignKey: 'user_id',
-})
+});
 
-FavoriteList.hasMany(Favorites, {
-  foreignKey: 'favorites_id',
-})
+//may not use these relationships
+Deck.belongsToMany(Card, {
+  through: {
+    model: Cards,
+    unique: false,
+  },
+  as: 'cards',
+});
 
-Favorites.belongsTo(FavoriteList, {
-  foreignKey:'favorites_id',
-  onDelete:'CASCADE',
-})
-
-Favorites.hasMany(Card, {
-  foreignKey:'card_id'
-})
-
-Card.belongsTo(Favorites, {
-  foreignKey:'card_id',
-  onDelete:'CASCADE',
-})
+Card.belongsToMany(Deck, {
+  through: {
+    model: Cards,
+    unique: false,
+  },
+  as: 'decks',
+});
 
 // User.hasMany(Card, {
 //     foreignKey: 'user_id',
 //     onDelete: 'CASCADE'
 //   });
-  
+
 //   Card.belongsTo(User, {
 //     foreignKey: 'user_id'
 //   });
-  
+
 //   Favorites.belongsTo(User, {
 //     foreignKey: 'user_id'
 //   });
@@ -56,5 +55,4 @@ Card.belongsTo(Favorites, {
 //     foreignKey: 'favorites_id',
 //   });
 
-
-module.exports = { Card, User, Favorites, FavoriteList };
+module.exports = { Card, User, Cards, Deck };

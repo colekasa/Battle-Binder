@@ -1,55 +1,48 @@
-const { Model, DataTypes} = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Card extends Model {}
 
-Card.init (
-    {
+Card.init(
+  {
     id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-       // autoIncrement: true,
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      // autoIncrement: true,
     },
     name: {
-        type: DataTypes.STRING,
-
-    },
-    type:{
-        type: DataTypes.STRING,
-
-    },
-    desc:{
       type: DataTypes.STRING,
-
+    },
+    type: {
+      type: DataTypes.STRING,
+    },
+    desc: {
+      type: DataTypes.STRING,
     },
     atk: {
-        type: DataTypes.INTEGER,
-
+      type: DataTypes.INTEGER,
     },
-    def:{
-        type: DataTypes.INTEGER,
-
+    def: {
+      type: DataTypes.INTEGER,
     },
-    level:{
-        type: DataTypes.INTEGER,
-
+    level: {
+      type: DataTypes.INTEGER,
     },
-    attribute:{
-        type: DataTypes.STRING,
+    attribute: {
+      type: DataTypes.STRING,
     },
-    card_images:{
-        type: DataTypes.STRING,
-
-    }
+    image_url: {
+      type: DataTypes.STRING,
     },
-    {
-        sequelize,
-        timestamps: false,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'Card',
-    }
+  },
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'Card',
+  }
 );
 
 module.exports = Card;
