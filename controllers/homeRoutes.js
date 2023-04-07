@@ -32,6 +32,26 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+router.get('/', async (req, res) => {
+  const cards = await Card.findAll({ attributes: ['id'] });
+
+  // Shuffle the IDs randomly
+  const shuffledIds = shuffle(cards.map((card) => card.id));
+
+  // Find a card by its ID using the shuffled index
+  // Terminal is showing Random Cards but not displaying data in Insomnia
+  const card = await Card.findOne({
+    where: { id: shuffledIds[0] },
+    attributes: ['id', 'name', 'type', 'desc', 'atk', 'def', 'level', 'attribute', 'image_url'],
+  });
+  var testCard = card.get({
+    plain: true
+  })
+  res.render('homepage', {
+    randomCard: testCard
+  });
+})
+
 module.exports = router;
 
 // router.get('/', async (req, res) => {

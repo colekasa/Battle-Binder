@@ -10,19 +10,16 @@ router.get('/random-card', async (req, res) => {
   const shuffledIds = shuffle(cards.map((card) => card.id));
 
   // Find a card by its ID using the shuffled index
-
+  // Terminal is showing Random Cards but not displaying data in Insomnia
   const card = await Card.findOne({
     where: { id: shuffledIds[0] },
-    attributes: ['id', 'name', 'type', 'desc', 'atk', 'def', 'level', 'attribute', 'card_images'/*'image_url'*/],
+    attributes: ['id', 'name', 'type', 'desc', 'atk', 'def', 'level', 'attribute', 'image_url'],
   });
-// ASK a TA about this error, when querying http://localhost:3001/api/cards/random-card  in insomnia
-  /*  throw new Error(`WHERE parameter "${key}" has invalid "undefined" value`);
-            ^
 
-Error: WHERE parameter "id" has invalid "undefined" value*/
   console.log(card);
-  console.log(id);
-  res.json(card);
+  res.json(card.get({
+    plain: true
+  }));
 });
 
 // Helper function to shuffle an array
@@ -35,13 +32,12 @@ function shuffle(array) {
 }
 
 // GET a Card by Name
-// Check and see what the error is with a TA
 // Insomnia error msg: Cannot GET /api/cards/Accesscode%20Talker
-router.get('/cards/:name', async (req, res) => {
+router.get('/:name', async (req, res) => {
   const name = req.params.name;
   const card = await Card.findOne({
     where: { name: name },
-    attributes: ['id', 'name', 'type', 'desc', 'atk', 'def', 'level', 'attribute', 'card_images'],
+    attributes: ['id', 'name', 'type', 'desc', 'atk', 'def', 'level', 'attribute', 'image_url'],
   });
   console.log(card);
   res.json(card);
