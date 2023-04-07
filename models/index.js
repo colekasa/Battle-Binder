@@ -57,4 +57,4 @@ Card.belongsTo(Favorites, {
 //   });
 
 
-module.exports = { Card, User, Favorites };
+module.exports = { Card, User, Favorites, FavoriteList };
