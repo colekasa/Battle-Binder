@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+
+<body class="has-background-dark">
+  <header>
+    <!-- navbar -->
+    <nav class="navbar has-background-black" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <!-- upper left corner logo and text to send user home  -->
+        <a class="navbar-item is-flex is-align-content-center" href="">
+          <img src="./assets/images/battle-binder-log-small.png">
+          <p class="title has-text-white pl-2"> Battle Binder
+          </p>
+        </a>
+        <!-- "hamburger menu" when page is small navigation option hide into three vertical lines (still figuring out how this works)  -->
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <!-- navigation links  -->
+      <div id="navbarBasicExample" class="navbar-menu ">
+        <div id="navbarBasicExample" class="navbar-menu">
+
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <a class="navbar-item has-text-white">
+                Favorites
+              </a>
+              <a class="navbar-item has-text-white">
+                Search
+              </a>
+              <div class="buttons">
+        <!-- commented out log in button out just in case to turn it back on for whatever reason  -->
+                <!-- <a class="button has-background-dark has-text-white">
+                  Log in
+                </a> -->
+                <a class="button has-background-dark has-text-white">
+                  Sign Up
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </nav>
+    </section>
+  </header>
+
+  
+
+  <br><br>
+<!-- main section form with all necessary fields have yet to add necessary ids for wiring  -->
+<section class="container">
+  <form class="box mx-6">
+    <div class="title has-text-dark has-text-centered">
+      <p>Log in</p>
+    </div>
+
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control">
+        <input class="input" type="email" placeholder="e.g. pharoahatem@example.com" id="name-signup">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Password</label>
+      <div class="control">
+        <input class="input" type="password" placeholder="********">
+      </div>
+    </div>
+
+    <button class="button has-background-black has-text-white is-normal">Log in</button>
+  </form>
+</section>
+
+
+
+<br><br>
+<!-- footer and random links -->
+  <footer class="footer has-background-black">
+    <div class="content has-text-centered ">
+        <p class="has-text-white">
+            <strong class="has-text-white">Battle Binder</strong> by <a href="https://github.com/colekasa/Battle-Binder">Kasabian
+                Nights</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+    </div>
+</footer>
+
+
+</body>
+
+</html>
