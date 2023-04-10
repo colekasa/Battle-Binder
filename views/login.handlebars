@@ -1,42 +1,30 @@
-<div class="row">
-  <div class="col-md-6">
-    <h2>Login</h2>
+<section class="container">
+  <form class="box mx-6">
+    <div class="title has-text-dark has-text-centered">
+      <p>Log in</p>
+    </div>
+    <div class="field">
+        {{!-- 0. kept "LABEL for" the same as mini project  --}}
+      <label for="email-login" class="label">Email</label>
+      <div class="control">
+        {{!-- 1. first INPUT for email login (kept id the same as mini project) --}} 
+        <input class="input" type="text" placeholder="e.g. pharoahatem@example.com" id="email-login">
+      </div>
+    </div>
 
-    <form class="form login-form">
-      <div class="form-group">
-        <label for="email-login">email:</label>
-        <input class="form-input" type="text" id="email-login" />
+    <div class="field">
+        {{!-- 2. kept "LABEL for" the same as mini project  --}}
+      <label for="password-login" class="label">Password</label>
+      <div class="control">
+        {{!-- 3. second INPUT for password (added same id as mini project) --}}
+        <input class="input" type="password" placeholder="********" id="password-login">
       </div>
-      <div class="form-group">
-        <label for="password-login">password:</label>
-        <input class="form-input" type="password" id="password-login" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">login</button>
-      </div>
-    </form>
-  </div>
-  <div class="col-md-6">
-    <h2>Signup</h2>
+    </div>
+        {{!-- 4. BUTTON for login (added type submit same as mini project) --}}
+    <button class="button has-background-black has-text-white is-normal" type="submit">Log in</button>
+  </form>
+</section>
 
-    <form class="form signup-form">
-      <div class="form-group">
-        <label for="name-signup">name:</label>
-        <input class="form-input" type="text" id="name-signup" />
-      </div>
-      <div class="form-group">
-        <label for="email-signup">email:</label>
-        <input class="form-input" type="text" id="email-signup" />
-      </div>
-      <div class="form-group">
-        <label for="password-signup">password:</label>
-        <input class="form-input" type="password" id="password-signup" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">signup</button>
-      </div>
-    </form>
-  </div>
-</div>
-
+<br><br>
+{{!-- javascript file that handles sign up and login  --}}
 <script src="./js/login.js"></script>
