@@ -2,8 +2,8 @@ const router = require('express').Router();
 const { User } = require('../models');
 const withAuth = require('../utils/auth');
 
-// Use withAuth middleware to prevent access to route
-router.get('/profile', withAuth, async (req, res) => {
+// Use withAuth middleware to prevent access to favorites route unless logged in
+router.get('/favorites', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
@@ -13,7 +13,7 @@ router.get('/profile', withAuth, async (req, res) => {
 
     const user = userData.get({ plain: true });
 
-    res.render('profile', {
+    res.render('favorites', {
       ...user,
       logged_in: true
     });
@@ -23,9 +23,9 @@ router.get('/profile', withAuth, async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
+  // If the user is already logged in, redirect the request to the favorites page
   if (req.session.logged_in) {
-    res.redirect('/profile');
+    res.redirect('/favorites');
     return;
   }
 
