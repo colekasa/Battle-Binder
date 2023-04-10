@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-md-6">
+    <h2>Login</h2>
+
+    <form class="form login-form">
+      <div class="form-group">
+        {{!-- 0. kept "LABEL for" the same as mini project  --}}
+        <label for="email-login">email:</label>
+        {{!-- 1. first INPUT for email login  --}}
+        <input class="form-input" type="text" id="email-login" />
+      </div>
+      <div class="form-group">
+        {{!-- 2. kept "LABEL for" the same as mini project  --}}
+        <label for="password-login">password:</label>
+        {{!-- 3. second INPUT for password  --}}
+        <input class="form-input" type="password" id="password-login" />
+      </div>
+      <div class="form-group">
+        {{!-- 4. BUTTON for login  --}}
+        <button class="btn btn-primary" type="submit">login</button>
+      </div>
+    </form>
+  </div>
+
+  {{!-- __________________________________ --}}
+
+
+  <div class="col-md-6">
+    <h2>Signup</h2>
+
+    <form class="form signup-form">
+      <div class="form-group">
+        {{!-- 0. kept "LABEL for" the same as mini project  --}}
+        <label for="name-signup">name:</label>
+        {{!-- 1. first INPUT for name signup  --}}
+        <input class="form-input" type="text" id="name-signup" />
+      </div>
+      <div class="form-group">
+        {{!-- 2. kept "LABEL for" the same as mini project  --}}
+        <label for="email-signup">email:</label>
+        {{!-- 3. second INPUT for name signup  --}}
+        <input class="form-input" type="text" id="email-signup" />
+      </div>
+      <div class="form-group">
+        {{!-- 4. kept "LABEL for" the same as mini project --}}
+        <label for="password-signup">password:</label>
+        {{!-- 5. third INPUT for name signup  --}}
+        <input class="form-input" type="password" id="password-signup" />
+      </div>
+      <div class="form-group">
+        {{!-- 6. sign up BUTTON  --}}
+        <button class="btn btn-primary" type="submit">signup</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="./js/login.js"></script>
