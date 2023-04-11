@@ -16,9 +16,10 @@ router.get('/deck', withAuth, async (req, res) => {
         },
       ],
     });
-
+    // Serialize the data for handlebars to use
     const user = userData.get({ plain: true });
     console.log(user);
+    // response renders the deck.handlebars file
     res.render('deck', {
       ...user,
       logged_in: true,

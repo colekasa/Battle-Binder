@@ -4,7 +4,11 @@ const router = require('express').Router();
 
 //CRUD
 
-//create a Deck
+//Add Card to Deck for Logged in User
+// JSON body post to add card to Deck
+//  {
+// 	"card_id":65741786
+// }
 router.post('/', withAuth, async (req, res) => {
   try {
     //to test input the card_id 
