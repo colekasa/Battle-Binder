@@ -3,49 +3,17 @@
     </div>
         <div class="has-text-centered">
           <!-- this figure tag is used to hold the image and make it work through bulma  -->
-            <figure class="is-inline-block mt-5">
+            <figure class="is-inline-block mt-5" for="random-card">
               <img src="{{ randomCard.image_url }}">
             </figure>
         </div>
-        <!-- add to favorites button  -->
+        <!-- add to Deck button  -->
         <div class="buttons is-centered mt-5">
-          <!-- TODO: write js code to add card to favorites list -->
-          <a class="button has-background-black has-text-white" id="add-favorite">
-              Add to Favorites
+          <!-- TODO: write js code to add card to Deck list -->
+          <a class="button has-background-black has-text-white" id="add-to-deck">
+              Add to Deck
           </a>
         
       </div>
-
-
-{{!-- 
-<div>
-  {{ randomCard.image_url }}
-</div> 
---}}
-
-
-
-{{!-- <!-- Loop over each object in the projects array -->
-{{#each projects as |project| }}
-<div class="row mb-4 project">
-  <div class="col-md-5">
-    <h2>
-      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
-      {{{get_emoji}}}
-      <a href="/project/{{project.id}}">{{project.name}}</a>
-    </h2>
-    <p>
-      <span for="img" aria-label="money">💲</span>
-      <!-- Pass needed_funding value to the helper function -->
-      <span class="dollar-amount">{{format_amount project.needed_funding}}</span>
-      needed!
-    </p>
-    <p>Created by {{project.user.name}} on {{format_date project.date_created}}</p>
-  </div>
-  <div class="col-md-7">
-    <p>
-      {{project.description}}
-    </p>
-  </div>
-</div>
-{{/each}} --}}
+      <!-- Import addToDeck.js file for "Add to Deck" functionality -->
+      <script src="../public/js/addToDeck.js"></script>

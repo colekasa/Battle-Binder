@@ -10,77 +10,31 @@
             <!-- where user's name will go using id?  -->
             <!-- added user.id to the name because I think thats how we ould call it from the model -->
             <div class="title has-text-white pl-6">
-                <p> Welcome, {{name.user_id}}</p>
+                <p> Welcome, {{name}}</p>
             </div>
             <br>
             <div class="title has-text-white pl-6">
-                <p> Here are your favorited cards:</p>
+                <p> Here are your decked cards:</p>
             </div>
         </div>
         <!-- column organizer that makes it is-multiline so when four column are made, it will break to new line for another four columns -->
+        {{#if card.length}}
         <div class="columns mx-6 is-multiline has-background-black p-4 box">
-
             <!-- this is where one column would go (column is actually card) and is split to 4 per row -->
-            {{!-- find a way to loop added favorited card to these colums --}}
-
+            {{!-- find a way to loop added decked card to these colums --}}
+            <!-- #each loop that displays for each card in the deck list -->
+            {{#each card as |card|}}
             <div class="column is-one-quarter">
                 <div>
                     <figure class="is-inline-block mt-5">
-                        <img src="https://images.ygoprodeck.com/images/cards/6983839.jpg">
+                        <!-- parsing the model data for card_id.image_url-->
+                        <img src="{{card_id.image_url}}">
                     </figure>
                 </div>
             </div>
-            <div class="column is-one-quarter">
-                <div>
-                    <figure class="is-inline-block mt-5">
-                        <img src="https://images.ygoprodeck.com/images/cards/6983839.jpg">
-                    </figure>
-                </div>
-            </div>
-            <div class="column is-one-quarter">
-                <div>
-                    <figure class="is-inline-block mt-5">
-                        <img src="https://images.ygoprodeck.com/images/cards/6983839.jpg">
-                    </figure>
-                </div>
-            </div>
-            <div class="column is-one-quarter">
-                <div>
-                    <figure class="is-inline-block mt-5">
-                        <img src="https://images.ygoprodeck.com/images/cards/6983839.jpg">
-                    </figure>
-                </div>
-            </div>
-            <div class="column is-one-quarter">
-                <div>
-                    <figure class="is-inline-block mt-5">
-                        <img src="https://images.ygoprodeck.com/images/cards/6983839.jpg">
-                    </figure>
-                </div>
-            </div>
-            <div class="column is-one-quarter">
-                <div>
-                    <figure class="is-inline-block mt-5">
-                        <img src="https://images.ygoprodeck.com/images/cards/6983839.jpg">
-                    </figure>
-                </div>
-            </div>
-            <div class="column is-one-quarter">
-                <div>
-                    <figure class="is-inline-block mt-5">
-                        <img src="https://images.ygoprodeck.com/images/cards/6983839.jpg">
-                    </figure>
-                </div>
-            </div>
-            <div class="column is-one-quarter">
-                <div>
-                    <figure class="is-inline-block mt-5">
-                        <img src="https://images.ygoprodeck.com/images/cards/6983839.jpg">
-                    </figure>
-                </div>
-            </div>
-
+            {{/each}}
         </div>
+        {{/if}}
     </div>
     <!-- if user isnt logged in they will get a message box displayed intructing them to login or sign up -->
     {{else}}
