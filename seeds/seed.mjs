@@ -3,10 +3,9 @@ import sequelize from '../config/connection.js';
 //const { Card, User, Favorite } = require('../models');
 //import { Card, User, Favorite } from "../models/index.js";
 import pkg from '../models/index.js';
-const { Card, User, Deck, Cards } = pkg;
+const { Card, User, Deck } = pkg;
 
 import fetch from 'node-fetch';
-
 
 // API LINK
 const API = 'https://db.ygoprodeck.com/api/v7/cardinfo.php?staple=yes';
@@ -53,13 +52,8 @@ function getYugiohCards() {
             password: 'passwordlength',
           }).then(function (user) {
             Deck.create({
-              title: 'title',
               user_id: user.id,
-            }).then(function (deck) {
-              Cards.create({
-                card_id: 58921041,
-                deck_id: deck.id,
-              });
+              card_id: cards[0].id,
             });
           });
         });

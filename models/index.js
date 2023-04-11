@@ -1,58 +1,62 @@
 const User = require('./User');
 const Card = require('./Card');
-const Cards = require('./Cards');
 const Deck = require('./Deck');
 
-User.hasMany(Deck, {
-  foreignKey: 'user_id',
-});
-
-Deck.belongsTo(User, {
-  foreignKey: 'user_id',
-});
-
-//may not use these relationships
-Deck.belongsToMany(Card, {
+User.belongsToMany(Card, {
   through: {
-    model: Cards,
+    model: Deck,
     unique: false,
   },
   as: 'cards',
 });
 
-Card.belongsToMany(Deck, {
+Card.belongsToMany(User, {
   through: {
-    model: Cards,
+    model: Deck,
     unique: false,
   },
-  as: 'decks',
+  as: 'users',
 });
 
+// Deck.belongsTo(User, {
+//   foreignKey: 'user_id',
+// });
+
+// //may not use these relationships
+
+// Card.belongsToMany(Deck, {
+//   through: {
+//     model: Cards,
+//     unique: false,
+//   },
+//   as: 'decks',
+// });
+
 // User.hasMany(Card, {
-//     foreignKey: 'user_id',
-//     onDelete: 'CASCADE'
-//   });
+//   foreignKey: 'user_id',
+//   onDelete: 'CASCADE',
+// });
 
-//   Card.belongsTo(User, {
-//     foreignKey: 'user_id'
-//   });
+// Card.belongsTo(User, {
+//   foreignKey: 'user_id',
+// });
 
-//   Favorites.belongsTo(User, {
-//     foreignKey: 'user_id'
-//   });
+// Deck.belongsTo(User, {
+//   foreignKey: 'user_id',
+// });
 
-//   User.hasMany(Favorites, {
-//     foreignKey: 'user_id',
-//     onDelete: 'CASCADE',
-//   });
+// User.hasOne(Deck, {
+//   foreignKey: 'user_id',
+//   onDelete: 'CASCADE',
+// });
 
-//   Favorites.hasMany(Card, {
-//     foreignKey: 'favorites_id',
-//     onDelete: 'CASCADE'
-//   });
+// Deck.hasMany(Card, {
+//   foreignKey: 'deck_id',
+//   onDelete: 'CASCADE',
+// });
 
-//   Card.belongsTo(Favorites, {
-//     foreignKey: 'favorites_id',
-//   });
+// Card.belongsTo(Deck, {
+//   foreignKey: 'deck_id',
+// });
 
-module.exports = { Card, User, Cards, Deck };
+module.exports = { Card, User, Deck };

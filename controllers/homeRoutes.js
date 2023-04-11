@@ -1,21 +1,27 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User, Deck, Card } = require('../models');
 const withAuth = require('../utils/auth');
 
 // Use withAuth middleware to prevent access to favorites route unless logged in
-router.get('/favorites', withAuth, async (req, res) => {
+router.get('/deck', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Project }],
+      include: [
+        {
+          model: Card,
+          through: Deck,
+          as: 'cards',
+        },
+      ],
     });
 
     const user = userData.get({ plain: true });
-
-    res.render('favorites', {
+    console.log(user);
+    res.render('deck', {
       ...user,
-      logged_in: true
+      logged_in: true,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -23,9 +29,9 @@ router.get('/favorites', withAuth, async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to the favorites page
+  // If the user is already logged in, redirect the request to the deck page
   if (req.session.logged_in) {
-    res.redirect('/favorites');
+    res.redirect('/deck');
     return;
   }
 
@@ -42,15 +48,25 @@ router.get('/', async (req, res) => {
   // Terminal is showing Random Cards but not displaying data in Insomnia
   const card = await Card.findOne({
     where: { id: shuffledIds[0] },
-    attributes: ['id', 'name', 'type', 'desc', 'atk', 'def', 'level', 'attribute', 'image_url'],
+    attributes: [
+      'id',
+      'name',
+      'type',
+      'desc',
+      'atk',
+      'def',
+      'level',
+      'attribute',
+      'image_url',
+    ],
   });
   var testCard = card.get({
-    plain: true
-  })
-  res.render('homepage', {
-    randomCard: testCard
+    plain: true,
   });
-})
+  res.render('homepage', {
+    randomCard: testCard,
+  });
+});
 
 module.exports = router;
 
@@ -70,9 +86,9 @@ module.exports = router;
 //     const projects = projectData.map((project) => project.get({ plain: true }));
 
 //     // Pass serialized data and session flag into template
-//     res.render('homepage', { 
-//       projects, 
-//       logged_in: req.session.logged_in 
+//     res.render('homepage', {
+//       projects,
+//       logged_in: req.session.logged_in
 //     });
 //   } catch (err) {
 //     res.status(500).json(err);
