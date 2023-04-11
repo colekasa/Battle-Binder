@@ -1,5 +1,5 @@
-// TODO: add a table that you can add multiple Favorites to by linking a foreign key
 const { Model, DataTypes } = require('sequelize');
+const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
 class Deck extends Model {}
@@ -12,8 +12,12 @@ Deck.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
-      type: DataTypes.STRING,
+    card_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Card',
+        key: 'id',
+      },
     },
     user_id: {
       type: DataTypes.INTEGER,

@@ -6,7 +6,7 @@ const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 
 const sequelize = require('./config/connection');
-const { Deck, Card, Cards } = require('./models');
+const { Deck, Card, Cards, User } = require('./models');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
@@ -44,11 +44,11 @@ app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
-    Deck.findAll({
+    User.findAll({
       include: [
         {
           model: Card,
-          through: Cards,
+          through: Deck,
           as: 'cards',
         },
       ],
