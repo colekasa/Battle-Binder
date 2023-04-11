@@ -45,7 +45,6 @@ router.get('/', async (req, res) => {
   const shuffledIds = shuffle(cards.map((card) => card.id));
 
   // Find a card by its ID using the shuffled index
-  // Terminal is showing Random Cards but not displaying data in Insomnia
   const card = await Card.findOne({
     where: { id: shuffledIds[0] },
     attributes: [
@@ -60,6 +59,16 @@ router.get('/', async (req, res) => {
       'image_url',
     ],
   });
+
+  // Helper function to shuffle an array
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
   var testCard = card.get({
     plain: true,
   });
