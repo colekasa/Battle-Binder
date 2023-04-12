@@ -21,7 +21,7 @@
 <div class="has-text-centered">
   <!-- this figure tag is used to hold the image and make it work through bulma  -->
   <figure class="is-inline-block mt-5" for="random-card">
-    <img src="{{ randomCard.image_url }}">
+    <img src="{{ randomCard.image_url }}" data-card-id={{randomCard.id}}>
   </figure>
 </div>
 <!-- add to Deck button  -->
@@ -72,5 +72,5 @@
 
 </section>
 <!-- Import addToDeck.js file for "Add to Deck" functionality -->
-{{!--
-<script src="../public/js/addToDeck.js "></script> --}}
+
+<script src="/js/addToDeck.js "></script>

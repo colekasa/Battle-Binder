@@ -43,7 +43,7 @@ router.put('/:id', async (req, res) => {
   try {
     const deckData = await Deck.update(req.body, {
       where: {
-        id: req.params.id,
+        user_id: req.session.user_id,
       },
     });
 
