@@ -53,11 +53,11 @@ sequelize.sync({ force: false }).then(() => {
         },
       ],
     }).then(function (deck) {
-      console.log(
-        deck[0].get({
-          plain: true,
-        })
-      );
+      // console.log(
+      //   deck[0].get({
+      //     plain: true,
+      //   })
+      // );
     });
     return console.log('Now listening');
   });
