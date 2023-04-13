@@ -23,6 +23,9 @@
     
     After creating your account there are two ways to find cards that you like. The first way to expand your deck is found above where you can use our random card generator located on the homepage. The next way we implemented is by using the search bar that is located at the bottom of the homepage. Either way you will have plenty of cards to choose from in order to build a sufficient deck ready for battle!  
 
+## Demo
+
+![Battle Binder Demo](./static-html/assets/images/battlebinderdemo.gif)
 ## Creators 
     The creators on this application are listed here below. 
         Cory Styer --> MacaroniKetchup
