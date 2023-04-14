@@ -32,8 +32,8 @@
         Cole Kasabian --> colekasa
         Miguel Villagomez --> migavg
 
-## Start Building!
-    URL: 
+## Start Building Your Deck Today!!
+    Battle Binder Link: https://arcane-falls-03228.herokuapp.com/
     
 
     
