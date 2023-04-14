@@ -39,7 +39,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-router.get('/battlebinder', async (req, res) => {
+router.get('/', async (req, res) => {
   const cards = await Card.findAll({ attributes: ['id'] });
 
   // Shuffle the IDs randomly
