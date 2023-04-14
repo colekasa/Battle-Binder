@@ -43,22 +43,29 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => {
-    User.findAll({
-      include: [
-        {
-          model: Card,
-          through: Deck,
-          as: 'cards',
-        },
-      ],
-    }).then(function (deck) {
-      // console.log(
-      //   deck[0].get({
-      //     plain: true,
-      //   })
-      // );
-    });
-    return console.log('Now listening');
-  });
+  app.listen(PORT, () => console.log('Now listening'));
 });
+
+
+
+
+// sequelize.sync({ force: false }).then(() => {
+//   app.listen(PORT, () => {
+//     User.findAll({
+//       include: [
+//         {
+//           model: Card,
+//           through: Deck,
+//           as: 'cards',
+//         },
+//       ],
+//     }).then(function (deck) {
+//       // console.log(
+//       //   deck[0].get({
+//       //     plain: true,
+//       //   })
+//       // );
+//     });
+//     return console.log('Now listening');
+//   });
+// });
