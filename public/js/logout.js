@@ -5,7 +5,7 @@ const logout = async () => {
   });
 
   if (response.ok) {
-    document.location.replace('/battlebinder');
+    document.location.replace('/');
   } else {
     alert(response.statusText);
   }
